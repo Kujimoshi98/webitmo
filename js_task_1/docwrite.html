@@ -2,38 +2,36 @@
 <html>
 	<head>
 		<meta charset = "utf-8">
-		<title>first task</title>
+		<title>docwrite</title>
 		<script>
-			let sentence = prompt('Введите предложение:', '');
+			let sentence = prompt('Введите предложение:', ''); //ввод предложения в всплывающем окне
 			while (sentence == null){
 				sentence = prompt('Введите предложение:', '');
 			}
-			let sumbCount = getSumbCount(sentence);
-			let wordCount = getWordCount(sentence);
+			let sumbCount = getSumbCount(sentence); //вызов функции кол-ва символов
+			let wordCount = getWordCount(sentence); //вызов функции кол-ва слов
 
-			let myUrl = window.location;
-			let myUrlFromGit = new URL('https://github.com/junnie1/web/blob/master/ex2.txt');
-			//myUrl = myUrlFromGit;
-			let pathArrayUrl = myUrl.pathname.split('/');
-			let fileExtension = pathArrayUrl[pathArrayUrl.length - 1].split('.');
+			let myUrl = window.location; //расположение файла на компьютере
+			let pathArrayUrl = myUrl.pathname.split('/'); //массив параметров, делим ссылку по черточке
+			let fileExtension = pathArrayUrl[pathArrayUrl.length - 1].split('.'); // выделяем расширение файла
 
-			let myUrlWithParams = new URL('https://google.com/search');
+			let myUrlWithParams = new URL('https://google.com/search'); //создание объекта url
 			myUrlWithParams.searchParams.set('q', fileExtension[fileExtension.length - 1]);
-			myUrlWithParams.searchParams.set('qw', myUrl.protocol);
+			myUrlWithParams.searchParams.set('qw', myUrl.protocol); // добавляем к ссылке второй параметр
 
-			document.write(sentence + '<br>');
-			document.write('В исходном предложении ' + sentence.length + ' символов, включая пробелы.<br>')
-			document.write('В исходном предложении ' + sumbCount + ' символов БЕЗ пробелов.<br>')
-			document.write('В исходном предложении ' + wordCount + ' слов(а).<br><br>');
+			document.write(sentence + '<br>'); //вывод предложения и переход на новую строку
+			document.write('В исходном предложении ' + sentence.length + ' символов, включая пробелы.<br>') // вывод длины предложения
+			document.write('В исходном предложении ' + sumbCount + ' символов БЕЗ пробелов.<br>') // вывод кол-ва символов
+			document.write('В исходном предложении ' + wordCount + ' слов(а).<br><br>'); // вывод кол-ва слов
 
-			document.write('Ссылка на файл: ' + myUrl.href + '<br>');
+			document.write('Ссылка на файл: ' + myUrl.href + '<br>'); //текст ссылки
 			document.write('Название протокола: ' + myUrl.protocol + '<br>');
 			document.write('Название файла: ' + pathArrayUrl[pathArrayUrl.length - 1] + '<br>');
-			document.write('Расширение файла: .' + fileExtension[fileExtension.length - 1] + '<br>');
+			document.write('Расширение файла: .' + fileExtension[fileExtension.length - 1] + '<br>'); // вывод параметров
 
-			document.write('Ссылка с параметрами: ' + myUrlWithParams + '<br>');
+			document.write('Ссылка с параметрами: ' + myUrlWithParams + '<br>'); // ссылка на гугл с параметрами
 
-			function getSumbCount(ourSentence){
+			function getSumbCount(ourSentence){ //функция кол-ва символов
 				if (ourSentence.length){
 					let sumbCount = 0;
 					for(let i = 0; i < ourSentence.length; i++)
@@ -44,13 +42,13 @@
 					return sumbCount;
 				} else return 0;
 			}
-			function getWordCount(ourSentence){
+			function getWordCount(ourSentence){ //функция подсчета кол-ва слов
 				if (ourSentence.length){
-					let flag = 0;
-					let wordCount = 0;
+					let flag = 0; // флаг, определяющий посчитали ли мы слово
+					let wordCount = 0; //кол-во слов
 					for (let i = 0; i < ourSentence.length; i++){
-						if (ourSentence[i] != ' '){
-							if (flag) continue;
+						if (ourSentence[i] != ' '){ //если символ не пробел
+							if (flag == 1) continue; 
 							else{
 								flag = 1;
 								wordCount++;

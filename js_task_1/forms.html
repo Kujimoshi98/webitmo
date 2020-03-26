@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>third task</title>
+		<title>forms</title>
 	</head>
 	<body>
 		<script>
-			for (let i = 0; i < 15; i++){
+			for (let i = 0; i < 15; i++){ // создание пустых форм
 				let form = document.createElement('form');
 				form.name = `Форма ${i + 1}`;
 				form.id = i;
 				document.body.append(form); 
 			}
 			
-			document.write('Список имен четных форм:<br>');
+			document.write('Список имен четных форм:<br>'); 
 			for (let i = 0; i < document.body.getElementsByTagName('form').length; i++){
-				if ((i + 1) % 2 == 0){
-					document.write(document.body.getElementsByTagName('form').item(i).name + '<br>');
+				if ((i + 1) % 2 == 0){ // условие четности
+					document.write(document.body.getElementsByTagName('form')[i].name + '<br>'); // вывод имен четных форм
 				}
 			}
 			document.write('<br>');
@@ -25,92 +25,91 @@
 
 			for (let i = 0; i < document.body.getElementsByTagName('form').length; i++){
 				let inputText = document.createElement('input');
-				inputText.type = 'text';
-				inputText.id = inputText.type + "_" + i;
+				inputText.type = 'text';  
+				inputText.id = inputText.type + "_" + i; // создание текстового поля ввода
 				let inputCheckBox = document.createElement('input');
 				inputCheckBox.type = 'checkbox';
-				inputCheckBox.id = inputCheckBox.type + '_' + i;
+				inputCheckBox.id = inputCheckBox.type + '_' + i; // создание чек боксов
 				let inputImage = document.createElement('input');
 				inputImage.type = 'image';
-				inputImage.id = inputImage.type + '_' + i;
+				inputImage.id = inputImage.type + '_' + i; // создание поля с картинкой
 				let inputUrl = document.createElement('input');
 				inputUrl.type = 'url';
-				inputUrl.id = inputUrl.type + '_' + i;
+				inputUrl.id = inputUrl.type + '_' + i; // создание поля ввода 
 				let inputTime = document.createElement('input');
 				inputTime.type = 'time';
-				inputTime.id = inputTime.type + '_' + i;
+				inputTime.id = inputTime.type + '_' + i; // создание поля времени
 				switch(i % 5){
 					case 0:
-						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputImage);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputCheckBox);
+						document.body.getElementsByTagName('form')[i].appendChild(inputText);
+						document.body.getElementsByTagName('form')[i].appendChild(inputTime);
+						document.body.getElementsByTagName('form')[i].appendChild(inputUrl);
+						document.body.getElementsByTagName('form')[i].appendChild(inputImage);
+						document.body.getElementsByTagName('form')[i].appendChild(inputCheckBox);
 						break;
 					case 1:
-						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputImage);
+						document.body.getElementsByTagName('form')[i].appendChild(inputText);
+						document.body.getElementsByTagName('form')[i].appendChild(inputTime);
+						document.body.getElementsByTagName('form')[i].appendChild(inputUrl);
+						document.body.getElementsByTagName('form')[i].appendChild(inputImage);
 						break;
 					case 2:
-						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputUrl);
+						document.body.getElementsByTagName('form')[i].appendChild(inputText);
+						document.body.getElementsByTagName('form')[i].appendChild(inputTime);
+						document.body.getElementsByTagName('form')[i].appendChild(inputUrl);
 						break;
 					case 3:
-						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
-						document.body.getElementsByTagName('form').item(i).appendChild(inputTime);
+						document.body.getElementsByTagName('form')[i].appendChild(inputText);
+						document.body.getElementsByTagName('form')[i].appendChild(inputTime);
 						break;
 					case 4:
-						document.body.getElementsByTagName('form').item(i).appendChild(inputText);
+						document.body.getElementsByTagName('form')[i].appendChild(inputText);
 						break;
 
 				};
-				let buttonShowName = document.createElement('button');
-				buttonShowName.type = 'button';
-				buttonShowName.innerText = 'Показать имя формы';
-				buttonShowName.id = buttonShowName.innerText + i;
+				let buttonShowName = document.createElement('button'); //создание кнопки имени
+				buttonShowName.type = 'button'; // тип
+				buttonShowName.innerText = 'Показать имя формы'; //надпись
+				buttonShowName.id = buttonShowName.innerText + i; // id
 				buttonShowName.style.padding = '10px';
 				buttonShowName.style.borderRadius = '15px';
 				buttonShowName.style.backgroundColor = 'green';
 				buttonShowName.style.color = 'white';
-				let imgShowName = document.createElement('img');
+				let imgShowName = document.createElement('img'); //создание картинки на кнопке
 				imgShowName.style.width = '20px';
 				imgShowName.style.height = '17px';
 				imgShowName.style.float = 'left';
 				imgShowName.style.paddingRight = '5px';
 				imgShowName.src = './1.jpg';
-				buttonShowName.appendChild(imgShowName);
+				buttonShowName.appendChild(imgShowName); // принадлежность "картинки" к "кнопке"
 				buttonShowName.onclick = function() {
-					alert(buttonShowName.innerText);
-					//alert(buttonShowName.parentElement.name);
+					alert(buttonShowName.parentElement.name); // вызов окна имени родительского элемента(формы)
 				}
-				buttonShowName.onmouseover = function() {
+				buttonShowName.onmouseover = function() { // при наведении на кнопку
 					buttonShowName.style.backgroundColor = 'red';
 				}
-				buttonShowName.onmouseout = function() {
+				buttonShowName.onmouseout = function() { // при убирании мыши с кнопки
 					buttonShowName.style.backgroundColor = 'green';
 				}
-				document.body.getElementsByTagName('form').item(i).appendChild(buttonShowName);
+				document.body.getElementsByTagName('form')[i].appendChild(buttonShowName); // добавление кнопки к форме
 
-				let buttonAccessory = document.createElement('button');
+				let buttonAccessory = document.createElement('button'); // создание кнопки принадлежности
 				buttonAccessory.type = 'button';
-				buttonAccessory.innerText = 'Принадлежность';
-				buttonAccessory.id = buttonAccessory.innerText + i;
+				buttonAccessory.innerText = 'Принадлежность'; //надпись кнопки
+				buttonAccessory.id = buttonAccessory.innerText + i; // id
 				buttonAccessory.style.padding = '10px';
 				buttonAccessory.style.borderRadius = '15px';
 				buttonAccessory.style.backgroundColor = 'green';
 				buttonAccessory.style.color = 'white';
-				let imgAccessory = document.createElement('img');
+				let imgAccessory = document.createElement('img'); //картинка к кнопке
 				imgAccessory.style.width = '20px';
 				imgAccessory.style.height = '17px';
 				imgAccessory.style.float = 'left';
 				imgAccessory.style.paddingRight = '5px';
 				imgAccessory.src = './2.jpg';
-				buttonAccessory.appendChild(imgAccessory);
+				buttonAccessory.appendChild(imgAccessory); // принадлежность "картинки" к "кнопке"
 				buttonAccessory.onclick = function() {
-					alert(buttonAccessory.parentElement.id);
+					alert(buttonAccessory.parentElement.id); // вывод id формы
 				}
 				buttonAccessory.onmouseover = function() {
 					buttonAccessory.style.backgroundColor = 'red';
@@ -118,9 +117,9 @@
 				buttonAccessory.onmouseout = function() {
 					buttonAccessory.style.backgroundColor = 'green';
 				}
-				document.body.getElementsByTagName('form').item(i).appendChild(buttonAccessory);
+				document.body.getElementsByTagName('form')[i].appendChild(buttonAccessory); // принадлежность "кнопки" к "форме"
 
-				let buttonReset = document.createElement('button');
+				let buttonReset = document.createElement('button'); // кнопка сбросить
 				buttonReset.type = 'reset';
 				buttonReset.innerText = 'Сбросить';
 				buttonReset.id = buttonReset.innerText + i;
@@ -134,17 +133,17 @@
 				imgReset.style.float = 'left';
 				imgReset.style.paddingRight = '5px';
 				imgReset.src = './3.jpg';
-				buttonReset.appendChild(imgReset);
+				buttonReset.appendChild(imgReset); //принадлежность "картинки" к "кнопке"
 				buttonReset.onmouseover = function() {
 					buttonReset.style.backgroundColor = 'red';
 				}
 				buttonReset.onmouseout = function() {
 					buttonReset.style.backgroundColor = 'green';
 				}
-				document.body.getElementsByTagName('form').item(i).appendChild(buttonReset);
+				document.body.getElementsByTagName('form')[i].appendChild(buttonReset); // принадлежность кнопки к форме
 
 
-				let buttonCountFields = document.createElement('button');
+				let buttonCountFields = document.createElement('button'); // кнопка количества полей
 				buttonCountFields.type = 'button';
 				buttonCountFields.innerText = 'Показать количество полей';
 				buttonCountFields.id = buttonCountFields.innerText + i;
@@ -158,10 +157,9 @@
 				imgCountFields.style.float = 'left';
 				imgCountFields.style.paddingRight = '5px';
 				imgCountFields.src = './4.jpg';
-				buttonCountFields.appendChild(imgCountFields);
+				buttonCountFields.appendChild(imgCountFields); //принадлежность "картинки" к "кнопке"
 				buttonCountFields.onclick = function() {
-					//alert(buttonCountFields.parentElement.children.length);
-					alert(buttonCountFields.parentElement.getElementsByTagName('input').length);
+					alert(buttonCountFields.parentElement.getElementsByTagName('input').length); // вывод кол-ва элементов инпутов(полей)
 				}
 				buttonCountFields.onmouseover = function() {
 					buttonCountFields.style.backgroundColor = 'red';
@@ -169,7 +167,7 @@
 				buttonCountFields.onmouseout = function() {
 					buttonCountFields.style.backgroundColor = 'green';
 				}
-				document.body.getElementsByTagName('form').item(i).appendChild(buttonCountFields);
+				document.body.getElementsByTagName('form')[i].appendChild(buttonCountFields); // принадлежность кнопки к форме
 			}
 
 

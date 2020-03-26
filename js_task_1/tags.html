@@ -2,52 +2,52 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>second task</title>
+		<title>tags</title>
 	</head>
 	<body>
 		<script>
-			let img = document.createElement('img');	
+			let img = document.createElement('img'); //создать 1 картинку
 			img.id = '0';
 			img.src = './tag1.png'
-			img.style.height = '50px';
-			img.style.width = '50px';
-			document.body.append(img);
-			document.write('<br>');
-			img = document.createElement('img');
+			img.style.height = '500px';
+			img.style.width = '500px';
+			document.body.append(img); // добавление картинки на страницу
+			document.write('<br>'); //переход на новую строку
+			img = document.createElement('img'); //создать 2 картинку
 			img.id = '1';
 			img.src = './tag2.jpg'
-			img.style.height = '90px';
+			img.style.height = '200px';
 			img.style.width = '150px';
 			document.body.append(img);
 			document.write('<br>');
-			img = document.createElement('img');
+			img = document.createElement('img'); //создать 3 картинку
 			img.src = './tag3.PNG'
 			img.id = '2';
-			img.style.height = '120px';
-			img.style.width = '60px';
+			img.style.height = '160px';
+			img.style.width = '180px';
 			document.body.append(img);
 			document.write('<br>');
 
-			document.write('Количество картинок: ' + document.body.getElementsByTagName('img').length);
+			document.write('Количество картинок: ' + document.body.getElementsByTagName('img').length); //подсчет кол-ва картинок
 			document.write('<br>');
 
-			document.write('Ширина первой картинки: ' + document.body.getElementsByTagName('img').item(0).width + 'px');
+			document.write('Ширина первой картинки: ' + document.body.getElementsByTagName('img')[0].width + 'px');
 			document.write('<br>');
 
-			let maxWidth = document.body.getElementsByTagName('img').item(0).width;
-			let sumWidth = document.body.getElementsByTagName('img').item(0).height;
-			for (let i = 1; i < document.body.getElementsByTagName('img').length; i++){
-				if (document.body.getElementsByTagName('img').item(i).width > maxWidth){
-					maxWidth = document.body.getElementsByTagName('img').item(i).width;
+			let maxWidth = document.body.getElementsByTagName('img')[0].width; // нач. значение макс. ширины
+			let sumHeight = document.body.getElementsByTagName('img')[0].height; // нач значение суммы высот
+			for (let i = 1; i < document.body.getElementsByTagName('img').length; i++){ // от 1 до длины массива
+				if (document.body.getElementsByTagName('img')[i].width > maxWidth){
+					maxWidth = document.body.getElementsByTagName('img')[i].width; // ищем максимальную ширину
 				}
-				sumWidth += document.body.getElementsByTagName('img').item(i).height;
+				sumHeight += document.body.getElementsByTagName('img')[i].height; //суммируем высоты
 			}
 
 			document.write('Максимальная ширина картинки: ' + maxWidth + 'px');
 			document.write('<br>');
 
-			document.write('Сумма высот всех картинок: ' + sumWidth + 'px');
-			document.write('<br>');
+			document.write('Сумма высот всех картинок: ' + sumHeight + 'px');
+			document.write('<br>'); // вывод
 
 
 			let countOnPage = 0; //на той же странице
@@ -56,11 +56,11 @@
 
 			for (let i = 0; i < 3; i++){
 				let anchor = document.createElement('a');
-				anchor.href = '#' + document.getElementsByTagName('img').item(i).id;
-				anchor.innerText = `${i+1} картинка`;
-				document.body.append(anchor);
+				anchor.href = '#' + document.getElementsByTagName('img')[i].id; //адрес ссылки
+				anchor.innerText = `${i+1} картинка`; // название ссылки
+				document.body.append(anchor); //добавление на страницу
 				document.write('<br>');
-				countOnPage++;
+				countOnPage++; //количество анкоров на той же странице
 			}	
 
 			document.write('Список ссылок:<br>');
@@ -70,7 +70,7 @@
 				anchor.innerText = `Название ${i+1}-й ссылки`;
 				document.body.append(anchor);
 				document.write('<br>');
-				countOnAnother++;
+				countOnAnother++; // кол-во анкоров на другие страницы
 			}
 			document.write('<br>');
 
@@ -80,7 +80,7 @@
 			document.write('Количество анкоров: ' + countOnPage + '<br>');
 			document.write('Количество ссылок: ' + countOnAnother + '<br>');
 			document.write('<br>');
-			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a').item(0).innerHTML);
+			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a')[0].innerHTML); // вывод названия первого анкора
 			
 		</script>
 	</body>
