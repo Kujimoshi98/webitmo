@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>second task</title>
+	</head>
+	<body>
+		<script>
+			let img = document.createElement('img');	
+			img.id = '0';
+			img.src = './tag1.png'
+			img.style.height = '50px';
+			img.style.width = '50px';
+			document.body.append(img);
+			document.write('<br>');
+			img = document.createElement('img');
+			img.id = '1';
+			img.src = './tag2.jpg'
+			img.style.height = '90px';
+			img.style.width = '150px';
+			document.body.append(img);
+			document.write('<br>');
+			img = document.createElement('img');
+			img.src = './tag3.PNG'
+			img.id = '2';
+			img.style.height = '120px';
+			img.style.width = '60px';
+			document.body.append(img);
+			document.write('<br>');
+
+			document.write('Количество картинок: ' + document.body.getElementsByTagName('img').length);
+			document.write('<br>');
+
+			document.write('Ширина первой картинки: ' + document.body.getElementsByTagName('img').item(0).width + 'px');
+			document.write('<br>');
+
+			let maxWidth = document.body.getElementsByTagName('img').item(0).width;
+			let sumWidth = document.body.getElementsByTagName('img').item(0).height;
+			for (let i = 1; i < document.body.getElementsByTagName('img').length; i++){
+				if (document.body.getElementsByTagName('img').item(i).width > maxWidth){
+					maxWidth = document.body.getElementsByTagName('img').item(i).width;
+				}
+				sumWidth += document.body.getElementsByTagName('img').item(i).height;
+			}
+
+			document.write('Максимальная ширина картинки: ' + maxWidth + 'px');
+			document.write('<br>');
+
+			document.write('Сумма высот всех картинок: ' + sumWidth + 'px');
+			document.write('<br>');
+
+
+			let countOnPage = 0; //на той же странице
+			let countOnAnother = 0; // на другие сайты	
+			document.write('Список анкоров:<br>');
+
+			for (let i = 0; i < 3; i++){
+				let anchor = document.createElement('a');
+				anchor.href = '#' + document.getElementsByTagName('img').item(i).id;
+				anchor.innerText = `${i+1} картинка`;
+				document.body.append(anchor);
+				document.write('<br>');
+				countOnPage++;
+			}	
+
+			document.write('Список ссылок:<br>');
+			for (let i = 0; i < 5; i++){
+				let anchor = document.createElement('a');
+				anchor.href = `https://vk.com/kujimoshi38${i+1}`;
+				anchor.innerText = `Название ${i+1}-й ссылки`;
+				document.body.append(anchor);
+				document.write('<br>');
+				countOnAnother++;
+			}
+			document.write('<br>');
+
+		
+
+			document.write('<br>');
+			document.write('Количество анкоров: ' + countOnPage + '<br>');
+			document.write('Количество ссылок: ' + countOnAnother + '<br>');
+			document.write('<br>');
+			document.write('Содержимое первого анкора:<br>' + document.body.getElementsByTagName('a').item(0).innerHTML);
+			
+		</script>
+	</body>
+</html>
