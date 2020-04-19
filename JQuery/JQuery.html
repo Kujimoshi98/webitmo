@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="jquery-3.4.1.js"></script>
+  <script> 
+  $(document).ready(function(){
+	//task1
+	$("h1").css("fontSize","50px");
+	$("p").css("color","blue");
+	$("p").css("fontSize","50px");
+	$(".cycle").css("fontStyle","italic");
+	$(".cycle").css("fontSize","50px");
+	$("a").css("fontWeight","bold");
+	$("a").css("fontSize","50px");
+	$(".container1").css("backgroundColor","green");
+	$('form *').prop('disabled', true); // установка всех элементов формы в disabled
+		
+	
+	//task 2
+	$("a").prepend("↗️ "); // присоединение эмоджи в начало ссылки
+	$("a").attr("target","_blank"); //открытие ссылки в новой вкладке
+	$("a").each(function() {
+		if ($(this).attr("href").startsWith("http:")==true) 
+		{
+		$(this).attr("href","https" + $(this).attr("href").slice(4));
+		}
+		alert($(this).attr("href"));
+	}); //функция изменение ссылки с выводом всплывающего окна
+	$("#btn").css("float","right");
+	$("#btn").click(function() {
+		$("a").each(function () { 
+				$(this).text(function (index, text) {    
+						return text.substring(2, text.length);  
+				});
+			});
+		$("a").attr("target","_self"); // открытие ссылки в этой же вкладке
+		}); // функция отмены эмоджи
+	
+	//task 3
+	$("#btn1").click(function() {
+		$("#1").fadeOut("slow");
+	 })
+	$("#btn2").click(function() {
+		$("#2").fadeTo("slow","0.2");
+	 })
+	$("#btn3").click(function() {
+		$("#3").slideUp("slow");
+	})
+	$("#btn4").click(function() {
+		$("#4").slideToggle("slow");
+	})
+	$("#btn5").click(function() {
+		$("#5").hide("slow");
+	})
+	
+	$("#btn6").css("margin-left","600px");
+	$("#btn6").click(function() {
+		$(".ajax").load("https://inxaoc.github.io/example/ajax-1.html");
+	})
+	});
+  </script>
+</head>
+<body>
+    <div class="header">
+	  <div class="container">
+		<input type="button" value="Отмена" id="btn">
+		<h1>JQuery</h1>
+		<p>Task 5</p>
+      </div>
+	</div>
+	
+	<div class="container1">
+        <h2 class ="cycle">Subscribe</h2>
+        <a href ="http://twitch.tv/seeyouyeah33">MyPage</a>
+		<br>
+	</div>
+	<br>
+<form>
+	<table>
+		<caption>Form 1</caption>
+			<tr>
+			<td><input type="text"></td>
+			</tr>
+		<tbody>
+			<tr>
+			<td><input type="password"></td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="submit">	
+</form>
+    <br>
+	<table border="1">
+   <tr>
+    <th>Text</th>
+    <th>Effect</th>
+   </tr>
+   <tr>
+    <td id="1">Проверка 1</td>
+    <td><input type="button" value="fadeOut" id="btn1"></td>
+  </tr>
+  <tr>
+    <td id="2">Проверка 2</td>
+    <td><input type="button" value="fadeTo" id="btn2"></td>
+  </tr>
+  <tr>
+    <td id="3">Проверка 3</td>
+    <td><input type="button" value="slideUp" id="btn3"></td>
+  </tr>
+  <tr>
+    <td id="4">Проверка 4</td>
+    <td><input type="button" value="SlideToggle" id="btn4"></td>
+  </tr>
+  <tr>
+    <td id="5">Проверка 5</td>
+    <td><input type="button" value="Hide" id="btn5"></td>
+  </tr>
+  </table>
+  <br>
+  <div class="footer">
+  <input type="button" value="ОБНОВИТЬ" id="btn6">
+  <div class="ajax">
+  </div>
+  </div>
+</body>
+</html>
